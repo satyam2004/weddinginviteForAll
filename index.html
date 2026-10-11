@@ -1,0 +1,519 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Cache-Control" content="no-cache, no-store, must-revalidate">
+    <meta http-equiv="Pragma" content="no-cache">
+    <meta http-equiv="Expires" content="0">
+    <title>Wedding Invitation - सत्यम और निशा</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    
+    <!-- Tailwind Config -->
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        maroon: {
+                            900: '#5A0A18',
+                            800: '#7C0A15',
+                            700: '#990011',
+                        },
+                        gold: {
+                            300: '#FDE047',
+                            400: '#FACC15',
+                            500: '#EAB308',
+                            600: '#D4AF37',
+                        }
+                    },
+                    fontFamily: {
+                        english: ['"Playfair Display"', 'serif'],
+                    },
+                    backgroundImage: {
+                        'mandala-pattern': "url('data:image/svg+xml,%3Csvg width=\\'60\\' height=\\'60\\' viewBox=\\'0 0 60 60\\' xmlns=\\'http://www.w3.org/2000/svg\\'%3E%3Cg fill=\\'none\\' fill-rule=\\'evenodd\\'%3E%3Cg fill=\\'%23d4af37\\' fill-opacity=\\'0.1\\'%3E%3Cpath d=\\'M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z\\'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E')",
+                    }
+                }
+            }
+        }
+    </script>
+
+    <!-- Custom Styles for Animations & Effects -->
+    <style>
+        body {
+            font-family: 'Playfair Display', serif;
+            background-color: #fdfbf7;
+            scroll-behavior: smooth;
+        }
+        
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+        }
+        
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .gold-border {
+            border: 2px solid #D4AF37;
+            box-shadow: 0 0 15px rgba(212, 175, 55, 0.3);
+        }
+
+        .kolka-divider {
+            width: 100%;
+            height: 30px;
+            background: url('data:image/svg+xml,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 30"%3E%3Cpath d="M50 0 Q55 15 50 30 Q45 15 50 0 Z" fill="%23D4AF37" /%3E%3Ccircle cx="50" cy="15" r="3" fill="%23990011" /%3E%3C/svg%3E') repeat-x center;
+            background-size: 40px;
+            margin: 2rem 0;
+        }
+
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(212, 175, 55, 0.5);
+        }
+
+        /* Prevent scrolling while overlay is active */
+        body.no-scroll {
+            overflow: hidden;
+        }
+
+        .wedding-date {
+            font-family: 'Noto Sans Devanagari', 'Mangal', 'Nirmala UI', sans-serif;
+            font-size: clamp(1.2rem, 2vw, 2rem);
+            line-height: 1.6;
+            letter-spacing: 0.02em;
+        }
+
+        .wedding-date .date-number {
+            font-family: 'Playfair Display', serif;
+            font-size: 1em;
+            font-weight: 700;
+            vertical-align: middle;
+        }
+
+        .wedding-date-card {
+            font-family: 'Noto Sans Devanagari', 'Mangal', 'Nirmala UI', sans-serif;
+            font-size: 1.125rem;
+            line-height: 1.6;
+            letter-spacing: 0.01em;
+            font-weight: 600;
+        }
+
+        .map-link {
+            display: inline-block;
+            margin-top: 0.75rem;
+            color: #990011;
+            font-weight: 700;
+            text-decoration: underline;
+            text-underline-offset: 3px;
+        }
+    </style>
+</head>
+<body class="text-maroon-900 antialiased overflow-x-hidden relative no-scroll">
+
+    <!-- Welcome Overlay -->
+    <div id="welcome-overlay" class="fixed inset-0 bg-maroon-900 bg-mandala-pattern z-[100] flex flex-col items-center justify-center text-white transition-opacity duration-1000 ease-in-out">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-maroon-900/90 pointer-events-none"></div>
+        <div class="relative z-10 text-center flex flex-col items-center">
+            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gold-400">सत्यम और निशा</h2>
+            <p class="text-lg md:text-xl mb-10 text-gray-200">हमारे विवाह समारोह में आपका हार्दिक स्वागत है</p>
+            <button id="enter-btn" class="bg-gold-600 text-maroon-900 font-bold text-xl px-10 py-4 rounded-full hover:bg-gold-400 transition-colors shadow-lg transform hover:scale-105 duration-300 animate-bounce">
+                निमंत्रण देखें
+            </button>
+        </div>
+    </div>
+
+    <!-- Sanai Sound Audio & Toggle Button -->
+    <button id="music-toggle" class="fixed bottom-6 right-6 z-50 bg-maroon-800 text-gold-400 p-4 rounded-full shadow-2xl border-2 border-gold-600 hover:bg-maroon-900 transition-transform transform hover:scale-110" title="Play/Pause Sanai Music">
+        <svg id="music-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+            <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.28l8-1.6v5.434A4.369 4.369 0 0015 11c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+        </svg>
+    </button>
+    <audio id="sanai-audio" loop>
+        <source src="sunipasong.mpeg" type="audio/mpeg">
+    </audio>
+
+    <!-- Navbar -->
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
+        <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-20">
+                <div class="flex-shrink-0 flex items-center">
+                    <a href="#" class="text-2xl font-bold text-gold-600 tracking-wider">सत्यम और निशा</a>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#home" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">मुख्य पृष्ठ</a>
+                    <a href="#preparation" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">विवाह की तैयारियाँ</a>
+                    <a href="#events" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">कार्यक्रम</a>                   
+                    <a href="#photos" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">यादें</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-gold-600 hover:text-gold-400 focus:outline-none">
+                        <svg class="h-8 w-8" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile Menu -->
+        <div id="mobile-menu" class="hidden md:hidden bg-maroon-900 absolute w-full pb-4 shadow-lg">
+            <a href="#home" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">मुख्य पृष्ठ</a>
+            <a href="#events" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">कार्यक्रम</a>
+            <a href="#preparation" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">विवाह की तैयारियाँ</a>
+            <a href="#photos" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">यादें</a>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section id="home" class="relative min-h-screen flex items-center justify-center bg-maroon-900 bg-mandala-pattern overflow-hidden pt-20">
+        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-maroon-900/90 pointer-events-none"></div>
+        
+        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in-up">
+            <h3 class="text-gold-400 text-lg md:text-xl mb-4 tracking-widest uppercase font-english">स्नेह और आशीर्वाद के साथ</h3>
+            <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
+                हम आपके साथ अपने विवाह का उत्सव मनाना चाहते हैं
+            </h1>
+            
+            <div class="max-w-5xl mx-auto my-10 text-white">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-5 text-sm md:text-base leading-relaxed items-center">
+                    <div class="text-center">
+                        <p class="font-semibold text-gold-400 text-lg md:text-xl">आयुष्मान सत्यम आनंद</p>
+                        <p class="leading-none">Software engineer</p>
+                        <p class="mt-2">सुपुत्र श्रीमती माधुरी सिंह एवं प्रो. सुशील कुमार सिंह</p>
+                        <p class="mt-2">ग्राम - बलिया थाना - पुरैनी (जिला - मधेपुरा)</p>
+                    </div>
+                    <div class="text-center -my-1">
+                        <div class="text-gold-400 text-4xl md:text-5xl font-bold leading-none">&amp;</div>
+                    </div>
+                    <div class="text-center">
+                        <p class="font-semibold text-gold-400 text-lg md:text-xl">आयुष्मती कुमारी निशा</p>
+                        <p class="leading-none">Deputy Manager (ICICI Bank)</p>
+                        <p class="mt-2">सुपुत्री स्व. नीतू सिंह एवं श्री संजय कुमार सिंह</p>
+                        <p class="mt-2">ग्राम - छतौनी, थाना - शिवहर (जिला - शिवहर)</p>
+                    </div>
+                </div>
+                <p class="wedding-date-card text-white mt-6 text-xl md:text-2xl">
+                    25 नवंबर 2026 • शुभ विवाह
+                </p>
+                <div class="mt-6">
+                    <a href="#preparation" class="inline-block bg-gold-600 text-maroon-900 font-bold text-base md:text-lg px-7 py-3 rounded-full hover:bg-gold-400 transition-colors shadow-lg transform hover:scale-105 duration-300">
+                        विवरण देखें
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Countdown Section -->
+    <section id="preparation" class="py-20 bg-white relative">
+        <div class="max-w-5xl mx-auto px-4 text-center fade-in-up">
+            <h2 class="text-3xl md:text-4xl font-bold text-maroon-900 mb-4">विवाह की तैयारियाँ</h2>
+            <div class="kolka-divider"></div>
+            
+            <div class="flex flex-wrap justify-center gap-4 md:gap-8 mt-10" id="countdown">
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 rounded-full gold-border flex items-center justify-center bg-maroon-50 mb-2 shadow-inner">
+                        <span id="days" class="text-3xl md:text-5xl font-bold text-maroon-800 font-english">00</span>
+                    </div>
+                    <span class="text-lg md:text-xl font-semibold text-gray-700">दिन</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 rounded-full gold-border flex items-center justify-center bg-maroon-50 mb-2 shadow-inner">
+                        <span id="hours" class="text-3xl md:text-5xl font-bold text-maroon-800 font-english">00</span>
+                    </div>
+                    <span class="text-lg md:text-xl font-semibold text-gray-700">घंटे</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 rounded-full gold-border flex items-center justify-center bg-maroon-50 mb-2 shadow-inner">
+                        <span id="minutes" class="text-3xl md:text-5xl font-bold text-maroon-800 font-english">00</span>
+                    </div>
+                    <span class="text-lg md:text-xl font-semibold text-gray-700">मिनट</span>
+                </div>
+                <div class="flex flex-col items-center">
+                    <div class="w-20 h-20 md:w-28 md:h-28 rounded-full gold-border flex items-center justify-center bg-maroon-50 mb-2 shadow-inner">
+                        <span id="seconds" class="text-3xl md:text-5xl font-bold text-maroon-800 font-english">00</span>
+                    </div>
+                    <span class="text-lg md:text-xl font-semibold text-gray-700">सेकंड</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Events Section -->
+    <section id="events" class="py-24 bg-maroon-50 relative bg-mandala-pattern">
+        <div class="max-w-6xl mx-auto px-4">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-maroon-900 mb-4">विवाह समारोह</h2>
+                <p class="text-xl text-gray-700">कार्यक्रम सूची</p>
+                <div class="kolka-divider w-1/2 mx-auto"></div>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
+                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                    <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">श्री सत्य नारायण पूजन एवं हल्दी कलश</h3>
+                    <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">20 नवंबर 2026 • शुक्रवार</p>
+                    <p class="text-gray-600 mt-auto">स्थान: निजी निवास, बलिया, पुरैनी, मधेपुरा</p>
+                    <a class="map-link" href="https://share.google/xYuhIWeI67XbmDWuQ" target="_blank" rel="noopener noreferrer">स्थान देखें</a>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 shadow-xl border-maroon-700 relative flex flex-col h-full">
+                    <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6 mt-4">
+                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">मंडपाच्छादन, धृतधारी, कुमरम एवं प्रीतिभोज</h3>
+                    <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">22 नवंबर 2026 • रविवार</p>
+                    <p class="text-gray-600 mt-auto">स्थान: निजी निवास, बलिया, पुरैनी, मधेपुरा</p>
+                    <a class="map-link" href="https://share.google/xYuhIWeI67XbmDWuQ" target="_blank" rel="noopener noreferrer">नक्शा देखें</a>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                    <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm4.51.59l3.52-3.53C19.8 5.29 20.3 4.25 20.3 3.12V2h-2v1.12c0 .59-.22 1.15-.62 1.56l-3.52 3.53c-.39.41-.62.97-.62 1.56V22h-2V9.77c0-1.12.5-2.17 1.27-2.95z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">मेहंदी रस्म</h3>
+                    <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">24 नवंबर 2026 • मंगलवार</p>
+                    <p class="text-gray-600 mt-auto">स्थान: निजी निवास, बलिया, पुरैनी, मधेपुरा</p>
+                    <a class="map-link" href="https://share.google/xYuhIWeI67XbmDWuQ" target="_blank" rel="noopener noreferrer">स्थान देखें</a>
+                </div>
+
+                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                    <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
+                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">शुभ विवाह</h3>
+                    <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">25 नवंबर 2026 • बुधवार</p>
+                    <p class="text-gray-600 mt-auto">स्थान: अभिनव उत्सव पैलेस (अरविंद), दरहिपट्टी, मुजफ्फरपुर, बिहार</p>
+                    <a class="map-link" href="https://share.google/moKSRPDvHUGYV8yrE" target="_blank" rel="noopener noreferrer">स्थान देखें</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="bg-maroon-900 py-16 text-white">
+        <div class="max-w-4xl mx-auto px-4 text-center">
+            <div class="bg-white/5 border border-gold-400/50 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm">
+                <p class="text-gold-400 text-2xl md:text-3xl font-bold mb-6">समस्त</p>
+                <p class="text-2xl md:text-3xl font-semibold mb-2">सिंह परिवार की</p>
+                <p class="text-xl md:text-2xl mb-6">तरफ से स्नेहिल आमंत्रण</p>
+                <p class="text-lg md:text-xl mb-4">आकांक्षी:</p>
+                <p class="text-2xl md:text-3xl font-bold text-gold-400 mb-4">श्री वीरेन्द्र नारायण सिंह</p>
+                <p class="text-lg md:text-xl mb-4">ग्राम - बलिया थाना - पुरैनी</p>
+                <p class="text-lg md:text-xl mb-6">(जिला - मधेपुरा)</p>
+                <p class="text-lg md:text-xl mb-2">पुण्य स्मृति में:</p>
+                <p class="text-lg md:text-xl font-bold text-gold-400">स्वर्गीय श्री कालेश्वर प्रसाद सिंह</p>
+                <p class="text-lg md:text-xl font-bold text-gold-400">एवं स्वर्गीय श्रीमती देवता देवी</p>
+            </div>
+        </div>
+    </section>
+
+   <!-- Photos Section -->
+    <section id="photos" class="py-24 bg-maroon-900 text-white relative">
+        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjN0MwQTE1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjNUEwQTE4IiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-50"></div>
+        
+        <div class="max-w-6xl mx-auto px-4 relative z-10">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-4xl md:text-5xl font-bold text-gold-400 mb-4">हमारी यादें</h2>
+                <p class="text-xl tracking-widest font-english">तस्वीरें</p>
+                <div class="w-24 h-1 bg-gold-600 mx-auto mt-6 rounded"></div>
+            </div>
+
+            <!-- Photo Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer">
+                    <img src="1.jpg?v=20261011" alt="Pre-wedding 1" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-100">
+                    <img src="nishasatyam.jpg?v=20261011" alt="Pre-wedding 2" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-200">
+                    <img src="6E893C76-BBCF-432E-88A8-60BBA48555A3.JPG?v=20261011" alt="Pre-wedding 3" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-300">
+                    <img src="AB66FCBC-AB36-4E1E-974F-7CEDA2AF0155.JPG?v=20261011" alt="Pre-wedding 4" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
+                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                        <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-black text-center py-8 border-t-4 border-gold-600">
+        <div class="max-w-4xl mx-auto px-4">
+            <h4 class="text-gold-500 text-2xl font-bold mb-2">सत्यम और निशा</h4>
+            <p class="text-gray-400">आपके प्रेम और आशीर्वाद से हमारा नया सफर शुरू होता है।</p>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script>
+        // Internal anchor links should scroll reliably without leaving stale hash state behind.
+        document.querySelectorAll('a[href^="#"]').forEach(link => {
+            link.addEventListener('click', (event) => {
+                const targetId = link.getAttribute('href');
+                if (!targetId || targetId === '#') return;
+
+                const target = document.querySelector(targetId);
+                if (!target) return;
+
+                event.preventDefault();
+                target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+                history.replaceState(null, '', window.location.pathname + window.location.search);
+            });
+        });
+
+        // 1. Enter Button & Audio Logic
+        const welcomeOverlay = document.getElementById('welcome-overlay');
+        const enterBtn = document.getElementById('enter-btn');
+        const musicToggle = document.getElementById('music-toggle');
+        const audio = document.getElementById('sanai-audio');
+        let isPlaying = false;
+
+        const playIcon = `
+            <svg id="music-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path fill-rule="evenodd" d="M10 18a8 8 0 100-16 8 8 0 000 16zM8 7a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1zm4 0a1 1 0 00-1 1v4a1 1 0 002 0V8a1 1 0 00-1-1z" clip-rule="evenodd"/>
+            </svg>`;
+            
+        const pauseIcon = `
+            <svg id="music-icon" class="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                <path d="M18 3a1 1 0 00-1.196-.98l-10 2A1 1 0 006 5v9.114A4.369 4.369 0 005 14c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V7.28l8-1.6v5.434A4.369 4.369 0 0015 11c-1.657 0-3 .895-3 2s1.343 2 3 2 3-.895 3-2V3z"/>
+            </svg>`;
+
+        function setPlayingState() {
+            musicToggle.classList.add('animate-bounce');
+            musicToggle.innerHTML = playIcon;
+            isPlaying = true;
+        }
+
+        function setPausedState() {
+            musicToggle.classList.remove('animate-bounce');
+            musicToggle.innerHTML = pauseIcon;
+            isPlaying = false;
+        }
+
+        // Action when user clicks the "Open Invitation" button
+        enterBtn.addEventListener('click', () => {
+            // Play Audio
+            audio.play().then(() => {
+                setPlayingState();
+            }).catch(err => {
+                console.log("Playback failed:", err);
+                setPausedState();
+            });
+
+            // Hide overlay with transition
+            welcomeOverlay.style.opacity = '0';
+            setTimeout(() => {
+                welcomeOverlay.style.display = 'none';
+                document.body.classList.remove('no-scroll'); // allow scrolling
+            }, 1000);
+        });
+
+        // Manual music toggle control (bottom right button)
+        musicToggle.addEventListener('click', (e) => {
+            e.stopPropagation(); 
+            if (isPlaying) {
+                audio.pause();
+                setPausedState();
+            } else {
+                audio.play();
+                setPlayingState();
+            }
+        });
+
+        // 2. Navbar Scroll Effect & Mobile Menu
+        const navbar = document.getElementById('navbar');
+        const mobileMenuBtn = document.getElementById('mobile-menu-btn');
+        const mobileMenu = document.getElementById('mobile-menu');
+
+        window.addEventListener('scroll', () => {
+            if (window.scrollY > 50) {
+                navbar.classList.add('bg-maroon-900', 'shadow-lg');
+                navbar.classList.remove('bg-transparent');
+            } else {
+                navbar.classList.remove('bg-maroon-900', 'shadow-lg');
+                navbar.classList.add('bg-transparent');
+            }
+        });
+
+        mobileMenuBtn.addEventListener('click', () => {
+            mobileMenu.classList.toggle('hidden');
+        });
+        
+        document.querySelectorAll('#mobile-menu a').forEach(link => {
+            link.addEventListener('click', () => {
+                mobileMenu.classList.add('hidden');
+            });
+        });
+
+        // 3. Countdown Timer Logic
+        const weddingDate = new Date("Nov 25, 2026 19:00:00").getTime();
+
+        const updateTimer = setInterval(() => {
+            const now = new Date().getTime();
+            const distance = weddingDate - now;
+
+            if (distance < 0) {
+                clearInterval(updateTimer);
+                document.getElementById("countdown").innerHTML = "<h3 class='text-3xl text-maroon-900 font-bold'>We are married! (Just Married!)</h3>";
+                return;
+            }
+
+            const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+            const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+            const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+            document.getElementById("days").innerText = days.toString().padStart(2, '0');
+            document.getElementById("hours").innerText = hours.toString().padStart(2, '0');
+            document.getElementById("minutes").innerText = minutes.toString().padStart(2, '0');
+            document.getElementById("seconds").innerText = seconds.toString().padStart(2, '0');
+        }, 1000);
+
+        // 4. Scroll Animations
+        const observerOptions = {
+            root: null,
+            rootMargin: '0px',
+            threshold: 0.1
+        };
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    observer.unobserve(entry.target); 
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.fade-in-up').forEach(element => {
+            observer.observe(element);
+        });
+    </script>
+</body>
+</html>
