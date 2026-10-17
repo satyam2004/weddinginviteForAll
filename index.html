@@ -182,22 +182,27 @@
         .map-link {
             display: inline-block;
             margin-top: 0.75rem;
-            color: #990011;
+            color: #8b1730 !important;
             font-weight: 700;
             text-decoration: underline;
             text-underline-offset: 3px;
+            transition: color 0.2s ease;
+        }
+
+        .map-link:hover {
+            color: #5a0a18 !important;
         }
 
         body {
-            background-color: #fbf5ec;
+            background-color: #5a0715;
             background-image:
-                radial-gradient(ellipse at 15% 8%, rgba(225, 196, 157, 0.2), transparent 34rem),
-                radial-gradient(ellipse at 90% 52%, rgba(230, 195, 187, 0.16), transparent 38rem);
+                radial-gradient(ellipse at 12% 10%, rgba(151, 25, 48, 0.65), transparent 34rem),
+                radial-gradient(ellipse at 88% 60%, rgba(35, 0, 8, 0.42), transparent 38rem);
         }
 
         #navbar {
-            background-color: rgba(255, 250, 242, 0.92);
-            border-bottom: 1px solid rgba(190, 153, 89, 0.35);
+            background-color: rgba(74, 4, 17, 0.96);
+            border-bottom: 1px solid rgba(212, 175, 55, 0.7);
             backdrop-filter: blur(10px);
         }
 
@@ -207,10 +212,10 @@
             position: relative;
             isolation: isolate;
             overflow: hidden;
-            background-color: #fffaf2;
+            background-color: #69091b;
             background-image:
                 url('wedding-floral-corner.svg'),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(250, 239, 225, 0.78));
+                radial-gradient(ellipse at 50% 35%, rgba(151, 18, 43, 0.92), rgba(69, 3, 17, 0.98) 78%);
             background-repeat: no-repeat;
             background-position: top left, center;
             background-size: clamp(170px, 24vw, 310px), cover;
@@ -220,7 +225,7 @@
             background-image:
                 url('wedding-floral-corner.svg'),
                 url('wedding-floral-corner.svg'),
-                linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(250, 239, 225, 0.78));
+                radial-gradient(ellipse at 50% 35%, rgba(151, 18, 43, 0.92), rgba(69, 3, 17, 0.98) 78%);
             background-position: top left, bottom left, center;
             background-size: clamp(250px, 36vw, 430px), clamp(250px, 36vw, 430px), cover;
         }
@@ -276,7 +281,7 @@
             border-bottom: 0;
             background-image:
                 url('wedding-floral-corner.svg'),
-                radial-gradient(ellipse at center, rgba(255, 255, 255, 0.96) 0%, rgba(255, 250, 242, 0.9) 53%, rgba(247, 231, 214, 0.68) 100%);
+                radial-gradient(ellipse at center, rgba(139, 13, 37, 0.78) 0%, rgba(91, 5, 22, 0.94) 58%, rgba(48, 1, 12, 0.98) 100%);
             background-position: top left, center;
             background-size: clamp(180px, 22vw, 290px), cover;
         }
@@ -321,6 +326,28 @@
 
         .invitation-note .note-accent {
             color: #8b3e36;
+        }
+
+        .invitation-note .family-invitation-card,
+        .wedding-kids-card {
+            background-color: #5a0a18;
+        }
+
+        .invitation-note .family-invitation-card p {
+            color: #fff7e8;
+        }
+
+        .invitation-note .family-invitation-card .note-accent {
+            color: #f3d889;
+        }
+
+        .family-invitation-card::after,
+        .wedding-kids-card::after {
+            background-color: #5a0a18;
+        }
+
+        .wedding-kids-card p {
+            color: #fff7e8 !important;
         }
 
         .floral-footer {
@@ -404,14 +431,112 @@
                 animation: none;
             }
         }
+
+        /* Deep red wedding theme: apply the colour to full section backgrounds, not only text. */
+        body { color: #fff4df; background-color: #4a0411; }
+        .floral-welcome, .floral-section, .floral-footer {
+            background-color: #69091b !important;
+            background-image: url('wedding-floral-corner.svg'), radial-gradient(ellipse at 50% 35%, #8d102b 0%, #65091b 52%, #3f020e 100%) !important;
+            background-repeat: no-repeat, no-repeat !important;
+            background-position: top left, center !important;
+            background-size: clamp(170px, 24vw, 310px), cover !important;
+        }
+        .floral-welcome {
+            background-image: url('wedding-floral-corner.svg'), url('wedding-floral-corner.svg'), radial-gradient(ellipse at 50% 35%, #8d102b 0%, #65091b 52%, #3f020e 100%) !important;
+            background-position: top left, bottom left, center !important;
+            background-size: clamp(250px, 36vw, 430px), clamp(250px, 36vw, 430px), cover !important;
+        }
+        #home.floral-section {
+            background-image: url('wedding-floral-corner.svg'), radial-gradient(ellipse at center, #951832 0%, #68091c 55%, #40020e 100%) !important;
+            background-position: top left, center !important;
+            background-size: clamp(180px, 22vw, 290px), cover !important;
+        }
+        .floral-section, .floral-footer { color: #fff3df; }
+        .floral-section h1, .floral-section h2, .floral-section h3,
+        .floral-section h4, .floral-section p, .floral-footer h4,
+        .floral-footer p { text-shadow: 0 1px 2px rgba(35, 0, 7, .22); }
+        #home .hero-copy, #home .hero-copy h1, #home .hero-copy h3,
+        #home .hero-copy .hero-name, #home .hero-copy .hero-ampersand,
+        #home .hero-copy .wedding-date-card,
+        .floral-welcome h2, .floral-welcome p,
+        .invitation-note, .invitation-note .note-accent,
+        .floral-footer h4 { color: #fff0d0 !important; }
+        #navbar a, #navbar button { color: #f4d98d; }
+        .floral-section .bg-white, .floral-section .bg-white\/90,
+        .floral-section .bg-white\/95 { color: #5a0a18; }
+        .floral-section .bg-white p, .floral-section .bg-white h3,
+        .floral-section .bg-white h4 { color: #5a0a18; }
+        .floral-section .bg-maroon-50, .floral-section .bg-maroon-100 { background-color: #f8e9d3; }
+        .floral-footer { border-top: 3px solid #d4af37; }
+
+        /* Keep the opening two screens rich red; make the remaining sections light and readable. */
+        #preparation.floral-section,
+        #events.floral-section,
+        #photos.floral-section,
+        section.invitation-note,
+        body > section.floral-section:not(#home):not(#preparation):not(#events):not(#photos),
+        .floral-footer {
+            background-color: #fff8f0 !important;
+            background-image:
+                url('wedding-floral-corner.svg'),
+                linear-gradient(135deg, #fffaf4 0%, #f8e8e3 52%, #fff8ef 100%) !important;
+            background-repeat: no-repeat, no-repeat !important;
+            background-position: top left, center !important;
+            background-size: clamp(135px, 19vw, 235px), cover !important;
+            color: #4e1820 !important;
+        }
+        #preparation.floral-section h1, #preparation.floral-section h2,
+        #preparation.floral-section h3, #preparation.floral-section h4,
+        #events.floral-section h1, #events.floral-section h2,
+        #events.floral-section h3, #events.floral-section h4,
+        #photos.floral-section h1, #photos.floral-section h2,
+        #photos.floral-section h3, #photos.floral-section h4,
+        section.invitation-note h1, section.invitation-note h2,
+        section.invitation-note h3, section.invitation-note h4,
+        .floral-footer h4 { color: #711629 !important; text-shadow: none !important; }
+        #preparation.floral-section p, #events.floral-section p,
+        #photos.floral-section p, section.invitation-note p,
+        .floral-footer p { color: #59353a !important; text-shadow: none !important; }
+        #preparation .countdown-label, #preparation #countdown span,
+        #preparation.floral-section span { color: #59353a; text-shadow: none !important; }
+        #preparation .gold-border { background-color: #fffdf9 !important; border-color: #c9a34a !important; }
+        #preparation #countdown [id] { color: #711629 !important; }
+        #events .event-card, #events .glass-card,
+        #photos .glass-card, #preparation .glass-card,
+        section.invitation-note .family-invitation-card,
+        section.invitation-note .wedding-kids-card {
+            background: rgba(255, 253, 249, .94) !important;
+            border: 1px solid rgba(173, 124, 70, .42) !important;
+            color: #4e1820 !important;
+        }
+        #events .event-card h3, #events .event-card p,
+        #events .glass-card h3, #events .glass-card p,
+        #photos .glass-card p { color: #59353a !important; text-shadow: none !important; }
+        section.invitation-note .family-invitation-card p,
+        section.invitation-note .wedding-kids-card p { color: #59353a !important; }
+        section.invitation-note .family-invitation-card .note-accent { color: #8b1730 !important; }
+        section.invitation-note .family-invitation-card::after,
+        section.invitation-note .wedding-kids-card::after { background-color: #fffdf9 !important; }
+        #preparation .kolka-divider { opacity: .85; }
+        .floral-footer { border-top: 3px solid #d4af37; }
+
+        /* Smooth borderless blend for Ganesha idol */
+        .ganesh-hero-img {
+            -webkit-mask-image: radial-gradient(circle at center, black 62%, transparent 95%);
+            mask-image: radial-gradient(circle at center, black 62%, transparent 95%);
+            filter: drop-shadow(0 10px 22px rgba(212, 175, 55, 0.35));
+        }
+
     </style>
 </head>
 <body class="text-maroon-900 antialiased overflow-x-hidden relative no-scroll">
 
     <!-- Welcome Overlay -->
     <div id="welcome-overlay" class="floral-welcome fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out">
-        <div class="relative z-10 text-center flex flex-col items-center">
-            <img src="ganeshji/pngtree-elegant-hindu-wedding-card-design-with-ganesha-aum-symbol-diwali-theme-png-image_21107600.png" alt="भगवान गणेश" class="w-56 h-56 md:w-64 md:h-64 object-contain border-0 rounded-none shadow-none mb-4" style="clip-path: inset(5%);">
+        <div class="relative z-10 text-center flex flex-col items-center px-4 max-w-xl mx-auto">
+            <img src="ganeshji/pngtree-elegant-hindu-wedding-card-design-with-ganesha-aum-symbol-diwali-theme-png-image_21107600.png" 
+                 alt="भगवान गणेश" 
+                 class="ganesh-hero-img w-72 h-72 sm:w-80 sm:h-80 md:w-96 md:h-96 object-contain border-0 rounded-none shadow-none mb-4 transform hover:scale-105 transition-transform duration-500">
             <h2 class="text-4xl md:text-5xl font-bold mb-4">सत्यम और निशा</h2>
             <p class="text-base md:text-lg mb-10 text-gray-200">हमारे विवाह समारोह में आपका हार्दिक स्वागत है</p>
             <button id="enter-btn" class="bg-gold-600 text-maroon-900 font-bold text-xl px-10 py-4 rounded-full hover:bg-gold-400 transition-colors shadow-lg transform hover:scale-105 duration-300 animate-bounce">
@@ -602,7 +727,7 @@
 
     <section class="floral-section invitation-note py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
-            <div class="event-card bg-white/80 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm">
+            <div class="event-card family-invitation-card rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm">
                 <p class="note-accent text-2xl md:text-3xl font-bold mb-6">समस्त</p>
                 <p class="text-2xl md:text-3xl font-semibold mb-2">सिंह परिवार की</p>
                 <p class="text-xl md:text-2xl mb-6">तरफ से स्नेहिल आमंत्रण</p>
@@ -619,7 +744,7 @@
 
     <section class="floral-section py-10 md:py-14">
         <div class="max-w-4xl mx-auto px-4">
-            <div class="event-card flex items-center justify-center gap-2 sm:gap-8 p-5 sm:p-8 shadow-lg" style="background-color: #fff; border-color: rgba(212, 175, 55, 0.65);">
+            <div class="event-card wedding-kids-card flex items-center justify-center gap-2 sm:gap-8 p-5 sm:p-8 shadow-lg" style="border-color: rgba(212, 175, 55, 0.65);">
                 <svg class="wedding-kid" viewBox="0 0 64 100" role="img" aria-label="छोटी बाजू की कमीज़ और पतलून पहने एक लड़का">
                     <path d="M18 25c-2-12 4-21 14-21s16 9 14 21l-4-4-2-9-5 6-6-4-7 11z" fill="#30211d"/>
                     <circle cx="32" cy="25" r="14" fill="#d99b72"/>
@@ -641,8 +766,8 @@
                     <path d="m19 48-5 9-4 3 2 3 6-3 6-9" fill="#d99b72" stroke="#d99b72" stroke-width="2" stroke-linejoin="round"/>
                 </svg>
                 <div class="text-center">
-                    <p class="text-lg sm:text-2xl md:text-3xl font-bold leading-relaxed" style="color: #5a0a18;">मेले मामा की छादी में जुलूल से जूलूल आना है</p>
-                    <p class="mt-3 text-base sm:text-lg font-semibold" style="color: #5a0a18;">— रिधांश और हर्षित</p>
+                    <p class="text-lg sm:text-2xl md:text-3xl font-bold leading-relaxed">मेले मामा की छादी में जुलूल से जूलूल आना है</p>
+                    <p class="mt-3 text-base sm:text-lg font-semibold">— रिधांश और हर्षित</p>
                 </div>
                 <svg class="wedding-kid" viewBox="0 0 64 100" role="img" aria-label="छोटी बाजू की कमीज़ और पतलून पहने एक लड़का">
                     <path d="M18 25c-2-12 4-21 14-21s16 9 14 21l-4-4-2-9-5 6-6-4-7 11z" fill="#30211d"/>
