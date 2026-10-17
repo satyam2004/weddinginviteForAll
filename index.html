@@ -83,6 +83,75 @@
             border: 1px solid rgba(212, 175, 55, 0.5);
         }
 
+        .event-card {
+            position: relative;
+            border: 3px double #c9a75e;
+            border-radius: 1rem;
+            box-shadow: 0 10px 26px rgba(90, 10, 24, 0.12), inset 0 0 0 3px rgba(255, 255, 255, 0.82), inset 0 0 0 5px rgba(201, 167, 94, 0.12);
+        }
+
+        .event-card::before {
+            content: "";
+            position: absolute;
+            inset: 8px;
+            border: 1px solid rgba(190, 153, 89, 0.62);
+            border-radius: 0.62rem;
+            background:
+                radial-gradient(circle, #d4af67 0 2px, #f4d9cf 2.5px 4px, transparent 4.5px) top left / 16px 16px no-repeat,
+                radial-gradient(circle, #d4af67 0 2px, #f4d9cf 2.5px 4px, transparent 4.5px) top right / 16px 16px no-repeat,
+                radial-gradient(circle, #d4af67 0 2px, #f4d9cf 2.5px 4px, transparent 4.5px) bottom left / 16px 16px no-repeat,
+                radial-gradient(circle, #d4af67 0 2px, #f4d9cf 2.5px 4px, transparent 4.5px) bottom right / 16px 16px no-repeat;
+            pointer-events: none;
+        }
+
+        .event-card::after {
+            content: "❧  ✦  ❧";
+            position: absolute;
+            top: -0.72rem;
+            left: 50%;
+            padding: 0 0.65rem;
+            background: #fffaf2;
+            color: #b58a37;
+            font-size: 1rem;
+            line-height: 1;
+            transform: translateX(-50%);
+        }
+
+        .photo-frame {
+            position: relative;
+            overflow: hidden;
+            padding: 10px;
+            border: 3px double #c9a75e;
+            border-radius: 1rem;
+            background: linear-gradient(135deg, #fffdf7, #f2e4c8 48%, #fffaf0 72%, #e9d5ad);
+            box-shadow: 0 12px 28px rgba(90, 10, 24, 0.18), inset 0 0 0 3px rgba(255, 255, 255, 0.92), inset 0 0 0 5px rgba(201, 167, 94, 0.18);
+        }
+
+        .photo-frame::before {
+            content: "";
+            position: absolute;
+            z-index: 2;
+            inset: 5px;
+            border: 1px solid rgba(181, 138, 55, 0.82);
+            border-radius: 0.68rem;
+            background:
+                radial-gradient(circle, #c9a75e 0 2px, #e6a8a2 2.5px 4px, transparent 4.5px) top left / 18px 18px no-repeat,
+                radial-gradient(circle, #c9a75e 0 2px, #e6a8a2 2.5px 4px, transparent 4.5px) top right / 18px 18px no-repeat,
+                radial-gradient(circle, #c9a75e 0 2px, #e6a8a2 2.5px 4px, transparent 4.5px) bottom left / 18px 18px no-repeat,
+                radial-gradient(circle, #c9a75e 0 2px, #e6a8a2 2.5px 4px, transparent 4.5px) bottom right / 18px 18px no-repeat;
+            pointer-events: none;
+        }
+
+        .photo-frame img {
+            border-radius: 0.55rem;
+        }
+
+        .photo-overlay {
+            z-index: 3;
+            inset: 10px;
+            border-radius: 0.55rem;
+        }
+
         /* Prevent scrolling while overlay is active */
         body.no-scroll {
             overflow: hidden;
@@ -117,6 +186,181 @@
             font-weight: 700;
             text-decoration: underline;
             text-underline-offset: 3px;
+        }
+
+        body {
+            background-color: #fbf5ec;
+            background-image:
+                radial-gradient(ellipse at 15% 8%, rgba(225, 196, 157, 0.2), transparent 34rem),
+                radial-gradient(ellipse at 90% 52%, rgba(230, 195, 187, 0.16), transparent 38rem);
+        }
+
+        #navbar {
+            background-color: rgba(255, 250, 242, 0.92);
+            border-bottom: 1px solid rgba(190, 153, 89, 0.35);
+            backdrop-filter: blur(10px);
+        }
+
+        .floral-welcome,
+        .floral-section,
+        .floral-footer {
+            position: relative;
+            isolation: isolate;
+            overflow: hidden;
+            background-color: #fffaf2;
+            background-image:
+                url('wedding-floral-corner.svg'),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(250, 239, 225, 0.78));
+            background-repeat: no-repeat;
+            background-position: top left, center;
+            background-size: clamp(170px, 24vw, 310px), cover;
+        }
+
+        .floral-welcome {
+            background-image:
+                url('wedding-floral-corner.svg'),
+                url('wedding-floral-corner.svg'),
+                linear-gradient(135deg, rgba(255, 255, 255, 0.78), rgba(250, 239, 225, 0.78));
+            background-position: top left, bottom left, center;
+            background-size: clamp(250px, 36vw, 430px), clamp(250px, 36vw, 430px), cover;
+        }
+
+        .floral-welcome::before,
+        #home.floral-section::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            right: 0;
+            z-index: 0;
+            width: clamp(170px, 24vw, 310px);
+            aspect-ratio: 1;
+            background: url('wedding-floral-corner.svg') center / contain no-repeat;
+            transform: scaleX(-1);
+            pointer-events: none;
+        }
+
+        .floral-welcome::after,
+        .floral-section::after,
+        .floral-footer::after {
+            content: "";
+            position: absolute;
+            right: 0;
+            bottom: 0;
+            z-index: 0;
+            width: clamp(170px, 24vw, 310px);
+            aspect-ratio: 1;
+            background: url('wedding-floral-corner.svg') center / contain no-repeat;
+            transform: rotate(180deg);
+            pointer-events: none;
+        }
+
+        .floral-welcome::after {
+            width: clamp(250px, 36vw, 430px);
+        }
+
+        #home.floral-section::before {
+            width: clamp(180px, 22vw, 290px);
+        }
+
+        #home.floral-section::after {
+            width: clamp(180px, 22vw, 290px);
+        }
+
+        .floral-section {
+            border-top: 1px solid rgba(190, 153, 89, 0.42);
+            border-bottom: 1px solid rgba(190, 153, 89, 0.32);
+        }
+
+        #home.floral-section {
+            border-top: 0;
+            border-bottom: 0;
+            background-image:
+                url('wedding-floral-corner.svg'),
+                radial-gradient(ellipse at center, rgba(255, 255, 255, 0.96) 0%, rgba(255, 250, 242, 0.9) 53%, rgba(247, 231, 214, 0.68) 100%);
+            background-position: top left, center;
+            background-size: clamp(180px, 22vw, 290px), cover;
+        }
+
+        .floral-section > div,
+        .floral-footer > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .floral-welcome > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        #home .hero-copy {
+            color: #4e2825;
+        }
+
+        #home .hero-copy h3,
+        #home .hero-copy .hero-name,
+        #home .hero-copy .hero-ampersand {
+            color: #8b3e36;
+        }
+
+        #home .hero-copy h1,
+        #home .hero-copy .wedding-date-card {
+            color: #4e2825;
+        }
+
+        .floral-welcome h2 {
+            color: #7c0a15;
+        }
+
+        .floral-welcome p {
+            color: #68433c;
+        }
+
+        .invitation-note {
+            color: #4e2825;
+        }
+
+        .invitation-note .note-accent {
+            color: #8b3e36;
+        }
+
+        .floral-footer {
+            border-top: 3px solid #d4af37;
+        }
+
+        .floral-footer h4 {
+            color: #8b3e36;
+        }
+
+        .floral-footer p {
+            color: #68433c;
+        }
+
+        @media (max-width: 639px) {
+            .floral-section,
+            .floral-footer {
+                background-size: 170px, cover;
+            }
+
+            .floral-welcome {
+                background-size: 170px, 170px, cover;
+            }
+
+            #home.floral-section {
+                background-size: 150px, cover;
+            }
+
+            .floral-welcome::after,
+            .floral-section::after,
+            .floral-footer::after,
+            .floral-welcome::before {
+                width: 170px;
+            }
+
+            #home.floral-section::before,
+            #home.floral-section::after {
+                width: 150px;
+            }
+
         }
 
         @keyframes wedding-kid-bob {
@@ -165,11 +409,10 @@
 <body class="text-maroon-900 antialiased overflow-x-hidden relative no-scroll">
 
     <!-- Welcome Overlay -->
-    <div id="welcome-overlay" class="fixed inset-0 bg-maroon-900 bg-mandala-pattern z-[100] flex flex-col items-center justify-center text-white transition-opacity duration-1000 ease-in-out">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-maroon-900/90 pointer-events-none"></div>
+    <div id="welcome-overlay" class="floral-welcome fixed inset-0 z-[100] flex flex-col items-center justify-center transition-opacity duration-1000 ease-in-out">
         <div class="relative z-10 text-center flex flex-col items-center">
             <img src="ganeshji/pngtree-elegant-hindu-wedding-card-design-with-ganesha-aum-symbol-diwali-theme-png-image_21107600.png" alt="भगवान गणेश" class="w-56 h-56 md:w-64 md:h-64 object-contain border-0 rounded-none shadow-none mb-4" style="clip-path: inset(5%);">
-            <h2 class="text-4xl md:text-5xl font-bold mb-4 text-gold-400">सत्यम और निशा</h2>
+            <h2 class="text-4xl md:text-5xl font-bold mb-4">सत्यम और निशा</h2>
             <p class="text-base md:text-lg mb-10 text-gray-200">हमारे विवाह समारोह में आपका हार्दिक स्वागत है</p>
             <button id="enter-btn" class="bg-gold-600 text-maroon-900 font-bold text-xl px-10 py-4 rounded-full hover:bg-gold-400 transition-colors shadow-lg transform hover:scale-105 duration-300 animate-bounce">
                 शुभागमन करें
@@ -188,17 +431,17 @@
     </audio>
 
     <!-- Navbar -->
-    <nav class="fixed w-full z-50 transition-all duration-300 bg-transparent" id="navbar">
+    <nav class="fixed w-full z-50 transition-all duration-300" id="navbar">
         <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
             <div class="flex justify-between items-center h-20">
                 <div class="flex-shrink-0 flex items-center">
                     <a href="#" class="text-2xl font-bold text-gold-600 tracking-wider">सत्यम और निशा</a>
                 </div>
                 <div class="hidden md:flex space-x-8">
-                    <a href="#home" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">मुख्य पृष्ठ</a>
-                    <a href="#preparation" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">विवाह की तैयारियाँ</a>
-                    <a href="#events" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">कार्यक्रम</a>                   
-                    <a href="#photos" class="text-white hover:text-gold-400 px-3 py-2 rounded-md text-lg transition">यादें</a>
+                    <a href="#home" class="text-maroon-900 hover:text-gold-600 px-3 py-2 rounded-md text-lg transition">मुख्य पृष्ठ</a>
+                    <a href="#preparation" class="text-maroon-900 hover:text-gold-600 px-3 py-2 rounded-md text-lg transition">विवाह की तैयारियाँ</a>
+                    <a href="#events" class="text-maroon-900 hover:text-gold-600 px-3 py-2 rounded-md text-lg transition">कार्यक्रम</a>
+                    <a href="#photos" class="text-maroon-900 hover:text-gold-600 px-3 py-2 rounded-md text-lg transition">यादें</a>
                 </div>
                 <!-- Mobile menu button -->
                 <div class="md:hidden flex items-center">
@@ -211,43 +454,42 @@
             </div>
         </div>
         <!-- Mobile Menu -->
-        <div id="mobile-menu" class="hidden md:hidden bg-maroon-900 absolute w-full pb-4 shadow-lg">
-            <a href="#home" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">मुख्य पृष्ठ</a>
-            <a href="#events" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">कार्यक्रम</a>
-            <a href="#preparation" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">विवाह की तैयारियाँ</a>
-            <a href="#photos" class="block text-white hover:text-gold-400 px-4 py-2 text-center text-lg">यादें</a>
+        <div id="mobile-menu" class="hidden md:hidden bg-white/95 absolute w-full pb-4 shadow-lg">
+            <a href="#home" class="block text-maroon-900 hover:text-gold-600 px-4 py-2 text-center text-lg">मुख्य पृष्ठ</a>
+            <a href="#events" class="block text-maroon-900 hover:text-gold-600 px-4 py-2 text-center text-lg">कार्यक्रम</a>
+            <a href="#preparation" class="block text-maroon-900 hover:text-gold-600 px-4 py-2 text-center text-lg">विवाह की तैयारियाँ</a>
+            <a href="#photos" class="block text-maroon-900 hover:text-gold-600 px-4 py-2 text-center text-lg">यादें</a>
         </div>
     </nav>
 
     <!-- Hero Section -->
-    <section id="home" class="relative min-h-screen flex items-center justify-center bg-maroon-900 bg-mandala-pattern overflow-hidden pt-20">
-        <div class="absolute inset-0 bg-gradient-to-b from-transparent to-maroon-900/90 pointer-events-none"></div>
+    <section id="home" class="floral-section relative min-h-screen flex items-center justify-center overflow-hidden pt-20">
         
-        <div class="relative z-10 text-center px-4 max-w-5xl mx-auto fade-in-up">
-            <h3 class="text-gold-400 text-lg md:text-xl mb-4 tracking-widest uppercase font-english">स्नेह और आशीर्वाद के साथ</h3>
-            <h1 class="text-xl md:text-2xl lg:text-3xl font-bold text-white mb-6 leading-tight">
+        <div class="hero-copy relative z-10 text-center px-4 max-w-5xl mx-auto fade-in-up">
+            <h3 class="text-lg md:text-xl mb-4 tracking-widest uppercase font-english">स्नेह और आशीर्वाद के साथ</h3>
+            <h1 class="text-xl md:text-2xl lg:text-3xl font-bold mb-6 leading-tight">
                 हम आपके साथ अपने विवाह का उत्सव मनाना चाहते हैं
             </h1>
             
-            <div class="max-w-5xl mx-auto my-10 text-white">
+            <div class="max-w-5xl mx-auto my-10">
                 <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-5 text-sm md:text-base leading-relaxed items-center">
                     <div class="text-center">
-                        <p class="font-semibold text-gold-400 text-lg md:text-xl">आयुष्मान सत्यम आनंद</p>
+                        <p class="hero-name font-semibold text-lg md:text-xl">आयुष्मान सत्यम आनंद</p>
                         <p class="leading-none">Software engineer</p>
                         <p class="mt-2">सुपुत्र श्रीमती माधुरी सिंह एवं प्रो. सुशील कुमार सिंह</p>
                         <p class="mt-2">ग्राम - बलिया, थाना - पुरैनी (जिला - मधेपुरा)</p>
                     </div>
                     <div class="text-center -my-1">
-                        <div class="text-gold-400 text-4xl md:text-5xl font-bold leading-none">&amp;</div>
+                        <div class="hero-ampersand text-4xl md:text-5xl font-bold leading-none">&amp;</div>
                     </div>
                     <div class="text-center">
-                        <p class="font-semibold text-gold-400 text-lg md:text-xl">आयुष्मती कुमारी निशा</p>
+                        <p class="hero-name font-semibold text-lg md:text-xl">आयुष्मती कुमारी निशा</p>
                         <p class="leading-none">Deputy Manager (ICICI Bank)</p>
                         <p class="mt-2">सुपुत्री स्व. नीतू सिंह एवं श्री संजय कुमार सिंह</p>
                         <p class="mt-2">ग्राम - छतौनी, थाना - शिवहर (जिला - शिवहर)</p>
                     </div>
                 </div>
-                <p class="wedding-date-card text-white mt-6 text-xl md:text-2xl">
+                <p class="wedding-date-card mt-6 text-xl md:text-2xl">
                     25 नवंबर 2026 • शुभ विवाह
                 </p>
                 <div class="mt-6">
@@ -260,7 +502,7 @@
     </section>
 
     <!-- Countdown Section -->
-    <section id="preparation" class="py-20 bg-white relative">
+    <section id="preparation" class="floral-section py-20 relative">
         <div class="max-w-5xl mx-auto px-4 text-center fade-in-up">
             <h2 class="text-3xl md:text-4xl font-bold text-maroon-900 mb-4">विवाह की तैयारियाँ</h2>
             <div class="kolka-divider"></div>
@@ -295,7 +537,7 @@
     </section>
 
     <!-- Events Section -->
-    <section id="events" class="py-24 bg-maroon-50 relative bg-mandala-pattern">
+    <section id="events" class="floral-section py-24 relative">
         <div class="max-w-6xl mx-auto px-4">
             <div class="text-center mb-16 fade-in-up">
                 <h2 class="text-4xl md:text-5xl font-bold text-maroon-900 mb-4">विवाह समारोह</h2>
@@ -304,9 +546,12 @@
             </div>
 
             <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-8">
-                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                <div class="glass-card event-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
                     <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z"/></svg>
+                        <svg class="w-8 h-8 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M7 10h10l1.2 7.2a2.5 2.5 0 0 1-2.47 2.9H8.27a2.5 2.5 0 0 1-2.47-2.9L7 10Z"/>
+                            <path d="M9 10c0-2.4 1.2-4.7 3-6 1.8 1.3 3 3.6 3 6M12 4v6M8 7 5.5 5.5M16 7l2.5-1.5M4 21h16"/>
+                        </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">श्री सत्य नारायण पूजन एवं हल्दी कलश</h3>
                     <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">20 नवंबर 2026 • शुक्रवार</p>
@@ -314,9 +559,13 @@
                     <a class="map-link" href="https://maps.app.goo.gl/a3XV3m4S6VQjY44XA?g_st=iw" target="_blank" rel="noopener noreferrer">स्थान देखें</a>
                 </div>
 
-                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 shadow-xl border-maroon-700 relative flex flex-col h-full">
+                <div class="glass-card event-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 shadow-xl relative flex flex-col h-full">
                     <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6 mt-4">
-                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <svg class="w-8 h-8 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <path d="M3 10.5h18L12 4l-9 6.5Z"/>
+                            <path d="M5 10.5V20M19 10.5V20M9 10.5V20M15 10.5V20M3 20h18"/>
+                            <path d="M7 3.5v2M17 3.5v2M6 2.5h2M16 2.5h2"/>
+                        </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">मंडपाच्छादन, धृतधारी, कुमरम एवं प्रीतिभोज</h3>
                     <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">22 नवंबर 2026 • रविवार</p>
@@ -324,19 +573,23 @@
                     <a class="map-link" href="https://maps.app.goo.gl/a3XV3m4S6VQjY44XA?g_st=iw" target="_blank" rel="noopener noreferrer">नक्शा देखें</a>
                 </div>
 
-                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                <div class="glass-card event-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
                     <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M11 9H9V2H7v7H5V2H3v7c0 2.12 1.66 3.84 3.75 3.97V22h2.5v-9.03C11.34 12.84 13 11.12 13 9V2h-2v7zm4.51.59l3.52-3.53C19.8 5.29 20.3 4.25 20.3 3.12V2h-2v1.12c0 .59-.22 1.15-.62 1.56l-3.52 3.53c-.39.41-.62.97-.62 1.56V22h-2V9.77c0-1.12.5-2.17 1.27-2.95z"/></svg>
+                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24" aria-hidden="true"><path d="M19 3v12.5a3.5 3.5 0 1 1-2-3.16V7.4l-7 1.5v9.1a3.5 3.5 0 1 1-2-3.16V7.3L19 5.2V3z"/></svg>
                     </div>
-                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">मेहंदी रस्म</h3>
+                    <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">मेहंदी एवं संगीत</h3>
                     <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">24 नवंबर 2026 • मंगलवार</p>
                     <p class="text-gray-600 mt-auto">स्थान: निजी निवास, बलिया, पुरैनी, मधेपुरा</p>
                     <a class="map-link" href="https://maps.app.goo.gl/a3XV3m4S6VQjY44XA?g_st=iw" target="_blank" rel="noopener noreferrer">स्थान देखें</a>
                 </div>
 
-                <div class="glass-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
+                <div class="glass-card event-card p-8 rounded-xl text-center fade-in-up hover:-translate-y-2 transition-transform duration-300 flex flex-col h-full">
                     <div class="w-16 h-16 mx-auto bg-maroon-100 rounded-full flex items-center justify-center mb-6">
-                        <svg class="w-8 h-8 text-gold-600" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
+                        <svg class="w-8 h-8 text-gold-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                            <circle cx="9" cy="13" r="6"/>
+                            <circle cx="15" cy="13" r="6"/>
+                            <path d="m12 5 .7-1.5L14 3l-1.3-.5L12 1l-.7 1.5L10 3l1.3.5L12 5ZM19.5 6l.5-1 .9-.4-.9-.4-.5-1-.5 1-.9.4.9.4.5 1Z"/>
+                        </svg>
                     </div>
                     <h3 class="text-2xl font-bold text-maroon-800 mb-2 min-h-[72px] flex items-center justify-center">शुभ विवाह</h3>
                     <p class="text-lg font-semibold text-gray-800 mb-2 min-h-[28px] flex items-center justify-center wedding-date-card">25 नवंबर 2026 • बुधवार</p>
@@ -347,24 +600,24 @@
         </div>
     </section>
 
-    <section class="bg-maroon-900 py-16 text-white">
+    <section class="floral-section invitation-note py-16">
         <div class="max-w-4xl mx-auto px-4 text-center">
             <div class="bg-white/5 border border-gold-400/50 rounded-2xl p-8 md:p-12 shadow-2xl backdrop-blur-sm">
-                <p class="text-gold-400 text-2xl md:text-3xl font-bold mb-6">समस्त</p>
+                <p class="note-accent text-2xl md:text-3xl font-bold mb-6">समस्त</p>
                 <p class="text-2xl md:text-3xl font-semibold mb-2">सिंह परिवार की</p>
                 <p class="text-xl md:text-2xl mb-6">तरफ से स्नेहिल आमंत्रण</p>
-                <p class="text-lg md:text-xl mb-4">आकांक्षी:</p>
-                <p class="text-2xl md:text-3xl font-bold text-gold-400 mb-4">श्री वीरेन्द्र नारायण सिंह</p>
-                <p class="text-lg md:text-xl mb-4">ग्राम - बलिया थाना - पुरैनी</p>
-                <p class="text-lg md:text-xl mb-6">(जिला - मधेपुरा)</p>
-                <p class="text-lg md:text-xl mb-2">पुण्य स्मृति में:</p>
-                <p class="text-lg md:text-xl font-bold text-gold-400">स्वर्गीय श्री कालेश्वर प्रसाद सिंह</p>
-                <p class="text-lg md:text-xl font-bold text-gold-400">एवं स्वर्गीय श्रीमती देवता देवी</p>
+                <p class="text-lg md:text-xl font-bold mb-4">आकांक्षी:</p>
+                <p class="note-accent text-2xl md:text-3xl font-bold mb-4">श्री वीरेन्द्र नारायण सिंह</p>
+                <p class="text-lg md:text-xl mb-0">ग्राम - बलिया थाना - पुरैनी</p>
+                <p class="text-lg md:text-xl mb-4">(जिला - मधेपुरा)</p>
+                <p class="text-lg md:text-xl font-bold mb-4">पुण्य स्मृति में:</p>
+                <p class="note-accent text-lg md:text-xl font-bold">स्वर्गीय श्री कालेश्वर प्रसाद सिंह</p>
+                <p class="note-accent text-lg md:text-xl font-bold">एवं स्वर्गीय श्रीमती देवता देवी</p>
             </div>
         </div>
     </section>
 
-    <section class="py-10 md:py-14" style="background-color: #fdfbf7;">
+    <section class="floral-section py-10 md:py-14">
         <div class="max-w-4xl mx-auto px-4">
             <div class="flex items-center justify-center gap-2 sm:gap-8 rounded-2xl border-2 p-5 sm:p-8 shadow-lg" style="background-color: #fff; border-color: rgba(212, 175, 55, 0.65);">
                 <svg class="wedding-kid" viewBox="0 0 64 100" role="img" aria-label="छोटी बाजू की कमीज़ और पतलून पहने एक लड़का">
@@ -416,8 +669,7 @@
     </section>
 
    <!-- Photos Section -->
-    <section id="photos" class="py-24 bg-maroon-900 text-white relative">
-        <div class="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSI4IiBoZWlnaHQ9IjgiPgo8cmVjdCB3aWR0aD0iOCIgaGVpZ2h0PSI4IiBmaWxsPSIjN0MwQTE1Ij48L3JlY3Q+CjxwYXRoIGQ9Ik0wIDBMOCA4Wk04IDBMMCA4WiIgc3Ryb2tlPSIjNUEwQTE4IiBzdHJva2Utd2lkdGg9IjEiPjwvcGF0aD4KPC9zdmc+')] opacity-50"></div>
+    <section id="photos" class="floral-section py-24 relative">
         
         <div class="max-w-6xl mx-auto px-4 relative z-10">
             <div class="text-center mb-16 fade-in-up">
@@ -427,27 +679,27 @@
 
             <!-- Photo Grid -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer">
+                <div class="photo-frame fade-in-up group cursor-pointer">
                     <img src="1.jpg?v=20261011" alt="Pre-wedding 1" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-overlay absolute bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
-                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-100">
+                <div class="photo-frame fade-in-up group cursor-pointer delay-100">
                     <img src="nishasatyam.jpg?v=20261011" alt="Pre-wedding 2" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-overlay absolute bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
-                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-200">
+                <div class="photo-frame fade-in-up group cursor-pointer delay-200">
                     <img src="6E893C76-BBCF-432E-88A8-60BBA48555A3.JPG?v=20261011" alt="Pre-wedding 3" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-overlay absolute bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
-                <div class="fade-in-up overflow-hidden rounded-xl border-2 border-gold-400/50 shadow-lg group relative cursor-pointer delay-300">
+                <div class="photo-frame fade-in-up group cursor-pointer delay-300">
                     <img src="AB66FCBC-AB36-4E1E-974F-7CEDA2AF0155.JPG?v=20261011" alt="Pre-wedding 4" class="w-full h-80 object-cover transform group-hover:scale-110 transition-transform duration-700">
-                    <div class="absolute inset-0 bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
+                    <div class="photo-overlay absolute bg-maroon-900/40 opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-center justify-center">
                         <svg class="w-12 h-12 text-gold-400 drop-shadow-lg" fill="currentColor" viewBox="0 0 24 24"><path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C13.09 3.81 14.76 3 16.5 3 19.58 3 22 5.42 22 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/></svg>
                     </div>
                 </div>
@@ -456,10 +708,10 @@
     </section>
 
     <!-- Footer -->
-    <footer class="bg-black text-center py-8 border-t-4 border-gold-600">
+    <footer class="floral-footer text-center py-8">
         <div class="max-w-4xl mx-auto px-4">
-            <h4 class="text-gold-500 text-2xl font-bold mb-2">सत्यम और निशा</h4>
-            <p class="text-gray-400">आपके प्रेम और आशीर्वाद से हमारा नया सफर शुरू होता है।</p>
+            <h4 class="text-2xl font-bold mb-2">सत्यम और निशा</h4>
+            <p>आपके प्रेम और आशीर्वाद से हमारा नया सफर शुरू होता है।</p>
         </div>
     </footer>
 
@@ -546,11 +798,9 @@
 
         window.addEventListener('scroll', () => {
             if (window.scrollY > 50) {
-                navbar.classList.add('bg-maroon-900', 'shadow-lg');
-                navbar.classList.remove('bg-transparent');
+                navbar.classList.add('shadow-lg');
             } else {
-                navbar.classList.remove('bg-maroon-900', 'shadow-lg');
-                navbar.classList.add('bg-transparent');
+                navbar.classList.remove('shadow-lg');
             }
         });
 
